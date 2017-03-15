@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "declaration": false,
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
+    "noEmitOnError": true,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -10,7 +12,11 @@
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "typeRoots": [
-      "./node_modules/@types/"
+      "./node_modules/@types"
+    ],
+    "lib": [
+      "es5",
+      "dom"
     ]
   },
   "compileOnSave": true,
