@@ -1,7 +1,6 @@
-import { IEvent, ISession } from './../shared/event.model'
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Component } from '@angular/core'
-import { EventService } from '../shared/event.service'
+import { IEvent, ISession, EventService } from '../shared/index'
 
 @Component({
   templateUrl: '/app/events/event-details/event-details.component.html',
@@ -11,13 +10,16 @@ import { EventService } from '../shared/event.service'
     a { cursor:pointer }
   `]
 })
-export class EventDetailsComponent {
+export class EventDetailsComponent implements OnInit {
   event:IEvent
   addMode:boolean
+  filterBy:string = 'all'
+  sortBy:string = 'votes'
 
   constructor(private eventService:EventService, private route:ActivatedRoute) {
-
+    
   }
+
   ngOnInit() {
     this.event = this.eventService.getEvent(+this.route.snapshot.params['id']) 
   }
