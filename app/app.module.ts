@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule, ActivatedRouteSnapshot } from '@angular/router'
+import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+import { EventsAppComponent } from './events-app.component'
 import {
+  EventService,
   EventsListComponent,
   EventThumbnailComponent,
-  EventService,
   EventDetailsComponent,
   CreateEventComponent,
   EventRouteActivator,
@@ -17,16 +18,21 @@ import {
   VoterService,
   DurationPipe
 } from './events/index'
-import { EventsAppComponent } from './events-app.component'
+import { 
+  JQ_TOKEN, 
+  TOASTR_TOKEN, 
+  Toastr, 
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModalTriggerDirective 
+} from './common/index'
 import { NavBarComponent } from './nav/navbar.component'
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service'
-import { CollapsibleWellComponent } from './common/collapsible-well.component'
-import { appRoutes } from './routes'
 import { Error404Component } from './errors/404.component'
+import { appRoutes } from './routes'
 import { AuthService } from './user/auth.service'
 
 declare let toastr:Toastr
-
+declare let jQuery:Object
 @NgModule({
   imports: [
     BrowserModule,
@@ -38,19 +44,22 @@ declare let toastr:Toastr
     EventsAppComponent,
     EventsListComponent,
     EventThumbnailComponent,
-    EventDetailsComponent,
     NavBarComponent,
+    EventDetailsComponent,
     CreateEventComponent,
-    Error404Component,
     CreateSessionComponent,
+    Error404Component,
     SessionListComponent,
     UpvoteComponent,
     CollapsibleWellComponent,
+    SimpleModalComponent,
+    ModalTriggerDirective,
     DurationPipe
   ],
   providers: [
     EventService, 
     {provide: TOASTR_TOKEN, useValue: toastr}, 
+    {provide: JQ_TOKEN, useValue: jQuery}, 
     EventRouteActivator,
     EventListResolver,
     VoterService,    
