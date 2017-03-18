@@ -13,6 +13,8 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
+  UpvoteComponent,
+  VoterService,
   DurationPipe
 } from './events/index'
 import { EventsAppComponent } from './events-app.component'
@@ -42,6 +44,7 @@ declare let toastr:Toastr
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
+    UpvoteComponent,
     CollapsibleWellComponent,
     DurationPipe
   ],
@@ -50,6 +53,7 @@ declare let toastr:Toastr
     {provide: TOASTR_TOKEN, useValue: toastr}, 
     EventRouteActivator,
     EventListResolver,
+    VoterService,    
     AuthService,
     { 
       provide: 'canDeactivateCreateEvent', 
