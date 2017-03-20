@@ -1,6 +1,7 @@
 import { Router } from '@angular/router'
 import { AuthService } from './auth.service'
 import { Component } from '@angular/core'
+import { Response } from '@angular/http'
 
 @Component({
   templateUrl: 'app/user/login.component.html',
@@ -9,13 +10,19 @@ import { Component } from '@angular/core'
   `]
 })
 export class LoginComponent {
+  loginInvalid = false
   constructor(private authService:AuthService, private router:Router) {
 
   }
 
   login(formValues) {
-    this.authService.loginUser(formValues.userName, formValues.password)
-    this.router.navigate(['events'])
+    this.authService.loginUser(formValues.userName, formValues.password).subscribe(resp => {
+      if (!resp) {
+        this.loginInvalid = true
+      } else {
+        this.router.navigate(['events'])
+      }
+    })
   }
 
   cancel() {    
