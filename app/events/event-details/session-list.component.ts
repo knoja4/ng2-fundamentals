@@ -1,14 +1,15 @@
-import { VoterService } from './voter.service';
-import { AuthService } from '../../user/auth.service';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ISession } from '../shared/index';
+import { AuthService } from '../../user/auth.service';
+import { VoterService } from './voter.service';
 
 @Component({
   selector: 'session-list',
-  templateUrl: 'app/events/event-details/session-list.component.html',
+  moduleId: module.id,
+  templateUrl: 'session-list.component.html',
   styles: [`
     collapsible-well h6 {margin-top:-5px; margin-bottom:10px}
-  `],
+  `]
 })
 export class SessionListComponent implements OnChanges {
   @Input() sessions:ISession[];
@@ -17,11 +18,9 @@ export class SessionListComponent implements OnChanges {
   @Input() eventId:number;
   visibleSessions:ISession[] = [];
 
-  constructor(private auth:AuthService, private voterService:VoterService) {
+  constructor(private auth:AuthService, private voterService:VoterService) {}
 
-  }
-
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     // Add 'implements OnChanges' to the class.
     if (this.sessions) {

@@ -1,0 +1,1 @@
+{"summaries":[{"symbol":{"__symbol":0},"metadata":{"__symbolic":"class"},"type":{"summaryKind":0,"type":{"reference":{"__symbol":0},"diDeps":[],"lifecycleHooks":[]},"name":"duration","pure":true}}],"symbols":[{"__symbol":0,"name":"DurationPipe","filePath":"/home/noah/Documents/Dev/ng2-fundamentals/app/events/shared/duration.pipe.d.ts"}]}

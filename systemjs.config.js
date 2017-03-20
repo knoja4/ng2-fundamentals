@@ -33,6 +33,10 @@
         main: './main.js',
         defaultExtension: 'js'
       },
+      aot: {
+        main: './main.js',
+        defaultExtension: 'js'
+      },
       rxjs: {
         defaultExtension: 'js'
       }

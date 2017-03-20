@@ -1,0 +1,1 @@
+{"summaries":[{"symbol":{"__symbol":0},"metadata":{"__symbolic":"function","parameters":["words"],"value":{"__symbolic":"error","message":"Function call not supported","line":3,"character":11}}}],"symbols":[{"__symbol":0,"name":"restrictedWords","filePath":"/home/noah/Documents/Dev/ng2-fundamentals/app/events/shared/restricted-words.validator.d.ts"}]}

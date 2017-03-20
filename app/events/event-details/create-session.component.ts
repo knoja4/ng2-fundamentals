@@ -4,7 +4,8 @@ import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
   selector: 'create-session',
-  templateUrl: 'app/events/event-details/create-session.component.html',
+  moduleId: module.id,
+  templateUrl: 'create-session.component.html',
   styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
     .error input, .error select, .error textarea {background-color:#E3C3C5;}
@@ -37,7 +38,7 @@ export class CreateSessionComponent implements OnInit {
       presenter: this.presenter,
       duration: this.duration,
       level: this.level,
-      abstract: this.abstract,
+      abstract: this.abstract
     });
   }
 
@@ -49,7 +50,7 @@ export class CreateSessionComponent implements OnInit {
       level: formValues.level,
       presenter: formValues.presenter,
       abstract: formValues.abstract,
-      voters: [],
+      voters: []
     };
     this.saveNewSession.emit(session);
   }

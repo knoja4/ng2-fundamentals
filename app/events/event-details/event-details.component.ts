@@ -3,7 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { IEvent, ISession, EventService } from '../shared/index';
 
 @Component({
-  templateUrl: '/app/events/event-details/event-details.component.html',
+  moduleId: module.id,
+  templateUrl: 'event-details.component.html',
   styles: [`
     .container { padding-left:20px; padding-right:20px; }
     .event-image { height:100px; }
@@ -20,19 +21,12 @@ export class EventDetailsComponent implements OnInit {
     
   }
 
-  ngOnInit() {
-    this.route.data.forEach((data) => {
-      this.event = data['event'];
-      this.addMode = false;
-    });   
-  }
-
   addSession() {
     this.addMode = true;
   }
 
   saveNewSession(session:ISession) {
-    const nextId = Math.max.apply(null, this.event.sessions.map((s) => s.id));
+    const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
     session.id = nextId + 1;
     this.event.sessions.push(session);
     this.eventService.saveEvent(this.event).subscribe();
@@ -42,4 +36,11 @@ export class EventDetailsComponent implements OnInit {
   cancelAddSession() {
     this.addMode = false;
   }
+
+  ngOnInit() {
+    this.route.data.forEach((data) => {
+      this.event = data['event'];
+      this.addMode = false;
+    });   
+  }  
 }

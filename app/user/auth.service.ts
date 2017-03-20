@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IUser } from './user.model';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -14,11 +14,11 @@ export class AuthService {
     let options = new RequestOptions({headers});
     let loginInfo = { username: userName, password };
 
-    return this.http.post('/api/login', JSON.stringify(loginInfo), options).do((resp) => {
+    return this.http.post('/api/login', JSON.stringify(loginInfo), options).do(resp => {
       if (resp) {
         this.currentUser = <IUser>resp.json().user;
       }
-    }).catch((error) => {
+    }).catch(error => {
       return Observable.of(false);
     });
   }
@@ -34,7 +34,7 @@ export class AuthService {
       } else {
         return {};
       }
-    }).do((currentUser) => {
+    }).do(currentUser => {
       if (!!currentUser.userName) {
         this.currentUser = currentUser;
       }

@@ -1,8 +1,9 @@
+import './rxjs-extensions';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EventsAppComponent } from './events-app.component';
 import {
@@ -33,8 +34,10 @@ import { Error404Component } from './errors/404.component';
 import { appRoutes } from './routes';
 import { AuthService } from './user/auth.service';
 
-declare let toastr: Toastr;
-declare let jQuery: Object;
+import { UserModule } from './user/user.module';
+
+let toastr: Toastr = window['toastr'];
+let jQuery: Object = window['$'];
 
 @NgModule({
   imports: [
@@ -42,7 +45,8 @@ declare let jQuery: Object;
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
+    UserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   declarations: [
     EventsAppComponent,
@@ -54,12 +58,12 @@ declare let jQuery: Object;
     CreateSessionComponent,
     Error404Component,
     SessionListComponent,
-    UpvoteComponent,
     CollapsibleWellComponent,
     SimpleModalComponent,
+    UpvoteComponent,
     ModalTriggerDirective,
     LocationValidator,
-    DurationPipe,
+    DurationPipe
   ],
   providers: [
     EventService,
@@ -71,14 +75,14 @@ declare let jQuery: Object;
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',
-      useValue: checkDirtyState,
-    },
+      useValue: checkDirtyState
+    }
   ],
-  bootstrap: [EventsAppComponent],
+  bootstrap: [EventsAppComponent]
 })
 export class AppModule {}
 
-function checkDirtyState(component: CreateEventComponent) {
+export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
     return window.confirm('You have not saved this event, do you really want to cancel?');
   return true;

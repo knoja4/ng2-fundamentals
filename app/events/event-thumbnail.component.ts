@@ -1,4 +1,4 @@
-import { CurrencyPipe } from '@angular/common/src/pipes/number_pipe';
+// import { CurrencyPipe } from '@angular/common/src/pipes/number_pipe';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IEvent } from './shared/index';
 
@@ -15,11 +15,11 @@ import { IEvent } from './shared/index';
           <span *ngSwitchDefault>(Normal Start)</span>
         </div>
         <div>Price: {{event?.price | currency:'USD':true}}</div>
-        <div *ngIf="event?.location">
+        <div [hidden]="!event?.location">
           <span>Location: {{event?.location?.address}}</span>
           <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
         </div>
-        <div *ngIf="event?.onlineUrl">
+        <div [hidden]="!event?.onlineUrl">
           Online URL: {{event?.onlineUrl}}
         </div>
     </div>  
@@ -28,7 +28,7 @@ import { IEvent } from './shared/index';
     .thumbnail { min-height: 210px; }
     .pad-left { margin-left: 10px; }
     .well div { color: #bbb; }    
-  `],
+  `]
 })
 export class EventThumbnailComponent {
   @Input() event:IEvent;

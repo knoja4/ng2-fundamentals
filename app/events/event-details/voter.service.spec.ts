@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs/Rx';
-import { ISession } from '../shared/event.model';
 import { VoterService } from './voter.service';
+import { ISession } from '../shared/event.model';
+import { Observable } from 'rxjs/Observable';
 
 describe('VoterService', () => {
   let voterService: VoterService,

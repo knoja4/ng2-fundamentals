@@ -1,9 +1,9 @@
-import { FormGroup, Validator, NG_VALIDATORS } from '@angular/forms';
 import { Directive } from '@angular/core';
+import { FormGroup, Validator, NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
   selector: '[validateLocation]',
-  providers: [{provide: NG_VALIDATORS, useExisting: LocationValidator, multi: true}],
+  providers: [{provide: NG_VALIDATORS, useExisting: LocationValidator, multi: true}]
 })
 export class LocationValidator implements Validator {
   validate(formGroup: FormGroup): { [key: string]: any } {
