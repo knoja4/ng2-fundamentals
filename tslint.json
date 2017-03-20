@@ -1,0 +1,36 @@
+{
+    "rules": {
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "no-trailing-whitespace": false,
+        "whitespace": [
+            false
+        ],
+        "ordered-imports": [
+            false
+        ],
+        "object-literal-sort-keys": false,
+        "curly": false,
+        "typedef-whitespace": [
+            false
+        ],
+        "member-access": [
+            false
+        ],
+        "one-variable-per-declaration": [
+            false
+        ],
+        "no-string-literal": false,
+        "eofline": false,
+        "max-line-length": [
+            false
+        ],
+        "no-empty": false,
+        "interface-name": [
+            false
+        ]
+    },
+    "extends": "tslint:recommended"
+}

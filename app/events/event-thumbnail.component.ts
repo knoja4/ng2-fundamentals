@@ -1,6 +1,6 @@
 import { CurrencyPipe } from '@angular/common/src/pipes/number_pipe';
-import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { IEvent } from './shared/index'
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IEvent } from './shared/index';
 
 @Component({
   selector: 'event-thumbnail',
@@ -28,14 +28,14 @@ import { IEvent } from './shared/index'
     .thumbnail { min-height: 210px; }
     .pad-left { margin-left: 10px; }
     .well div { color: #bbb; }    
-  `]
+  `],
 })
 export class EventThumbnailComponent {
-  @Input() event:IEvent
+  @Input() event:IEvent;
 
   getStartTimeStyle():any {
     if (this.event && this.event.time === '8:00 am')
-      return {color: '#003300', 'font-weight': 'bold'} 
-    return {}
+      return {'color': '#003300', 'font-weight': 'bold'}; 
+    return {};
   }  
 }

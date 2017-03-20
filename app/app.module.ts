@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule } from '@angular/router'
-import { HttpModule } from '@angular/http'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
-import { EventsAppComponent } from './events-app.component'
+import { EventsAppComponent } from './events-app.component';
 import {
   EventService,
   EventsListComponent,
@@ -18,23 +18,23 @@ import {
   UpvoteComponent,
   VoterService,
   LocationValidator,
-  DurationPipe
-} from './events/index'
-import { 
-  JQ_TOKEN, 
-  TOASTR_TOKEN, 
-  Toastr, 
+  DurationPipe,
+} from './events/index';
+import {
+  JQ_TOKEN,
+  TOASTR_TOKEN,
+  Toastr,
   CollapsibleWellComponent,
   SimpleModalComponent,
-  ModalTriggerDirective 
-} from './common/index'
-import { NavBarComponent } from './nav/navbar.component'
-import { Error404Component } from './errors/404.component'
-import { appRoutes } from './routes'
-import { AuthService } from './user/auth.service'
+  ModalTriggerDirective,
+} from './common/index';
+import { NavBarComponent } from './nav/navbar.component';
+import { Error404Component } from './errors/404.component';
+import { appRoutes } from './routes';
+import { AuthService } from './user/auth.service';
 
-declare let toastr:Toastr
-declare let jQuery:Object
+declare let toastr: Toastr;
+declare let jQuery: Object;
 
 @NgModule({
   imports: [
@@ -42,7 +42,7 @@ declare let jQuery:Object
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   declarations: [
     EventsAppComponent,
@@ -59,27 +59,27 @@ declare let jQuery:Object
     SimpleModalComponent,
     ModalTriggerDirective,
     LocationValidator,
-    DurationPipe
+    DurationPipe,
   ],
   providers: [
-    EventService, 
-    {provide: TOASTR_TOKEN, useValue: toastr}, 
-    {provide: JQ_TOKEN, useValue: jQuery}, 
+    EventService,
+    {provide: TOASTR_TOKEN, useValue: toastr},
+    {provide: JQ_TOKEN, useValue: jQuery},
     EventResolver,
     EventListResolver,
-    VoterService,    
+    VoterService,
     AuthService,
-    { 
-      provide: 'canDeactivateCreateEvent', 
-      useValue: checkDirtyState 
-    }
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState,
+    },
   ],
-  bootstrap: [EventsAppComponent]
+  bootstrap: [EventsAppComponent],
 })
 export class AppModule {}
 
-function checkDirtyState(component:CreateEventComponent) {
+function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
-    return window.confirm('You have not saved this event, do you really want to cancel?')
-  return true
+    return window.confirm('You have not saved this event, do you really want to cancel?');
+  return true;
 }

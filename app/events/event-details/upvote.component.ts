@@ -14,20 +14,20 @@ import { Component, EventEmitter, Input, Output, style } from '@angular/core';
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class UpvoteComponent {
-  @Input() count: number
+  @Input() count: number;
   @Input() set voted(val) {
-    this.iconColor = val ? 'red' : 'white'
+    this.iconColor = val ? 'red' : 'white';
   }
-  @Output() vote = new EventEmitter()
-  iconColor: string
+  @Output() vote = new EventEmitter();
+  iconColor: string;
 
   constructor() { }
 
   onClick() {
-    this.vote.emit({})
+    this.vote.emit({});
   }
 
 }
